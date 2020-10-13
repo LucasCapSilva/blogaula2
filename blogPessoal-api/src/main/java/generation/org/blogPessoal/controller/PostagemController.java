@@ -42,11 +42,12 @@ public class PostagemController {
 	public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 		return ResponseEntity.ok(repositoty.findAllByTituloContainingIgnoreCase(titulo));
 	}
-	 
+	
 	@PostMapping
 	public ResponseEntity<Postagem> post (@RequestBody Postagem postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositoty.save(postagem));
 	}
+	
 	@PostMapping("/all")
 	public ResponseEntity<List<Postagem>> postAll (@RequestBody List<Postagem> postagem){
 		return ResponseEntity.status(HttpStatus.CREATED).body(repositoty.saveAll(postagem));
